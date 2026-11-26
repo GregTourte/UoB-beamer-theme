@@ -34,6 +34,7 @@
 \mode<presentation>
 
 \RequirePackage{tikz}
+\usetikzlibrary{positioning}
 \RequirePackage{keyval}
 \RequirePackage{ifluatex}
 \RequirePackage{etoolbox}
@@ -111,15 +112,16 @@
   \rightimage{}%
   \divider{\@defaultdivider}%
 }
+\setbeamersize{text margin left = 8mm}
+\setbeamersize{text margin right = 8mm}
 
 % Title page
 \def\@logo{logo}
 \def\logo#1{\gdef\@logo{#1}}
 
 \defbeamertemplate*{title page}{UoB}[1][]{%
-  \vskip4mm
-  \tikz\pic{\@logo};
-  \vskip8mm%
+	\tikz[overlay, remember picture]\pic at ([shift = {(\beamer@leftmargin,-8mm)}]current page.north west) {\@logo};
+  \vskip12mm%
   {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}%
   \vskip2mm%
   {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
