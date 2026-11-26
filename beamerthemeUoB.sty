@@ -34,7 +34,7 @@
 \mode<presentation>
 
 \RequirePackage{tikz}
-\usetikzlibrary{positioning}
+\usetikzlibrary{positioning, shapes.geometric}
 \RequirePackage{keyval}
 \RequirePackage{ifluatex}
 \RequirePackage{etoolbox}
@@ -120,7 +120,7 @@
 \def\logo#1{\gdef\@logo{#1}}
 
 \defbeamertemplate*{title page}{UoB}[1][]{%
-	\tikz[overlay, remember picture]\pic at ([shift = {(\beamer@leftmargin,-8mm)}]current page.north west) {\@logo};
+  \tikz[overlay, remember picture]\pic at ([shift = {(\beamer@leftmargin,-8mm)}]current page.north west) {\@logo};
   \vskip12mm%
   {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}%
   \vskip2mm%
@@ -177,6 +177,7 @@
 
 % Top level items in itemize
 \setbeamertemplate{itemize item}{\tikz\pic{bullet};}
+\setbeamertemplate{itemize subitem}{\tikz\node[draw, fill, isosceles triangle, isosceles triangle apex angle = 50, inner sep = 0pt, outer sep = 0pt, minimum size = 1ex] {};}
 
 % Remove the navigation bar
 \setbeamertemplate{navigation symbols}{}
@@ -190,7 +191,7 @@
 
 % Frame title
 \defbeamertemplate*{frametitle}{UoB}[1][]{%
-  \vskip7mm%
+  \vskip4.5mm%
   {\usebeamercolor[fg]{frametitle}\usebeamerfont*{frametitle}\insertframetitle\par}%
   \ifx\@empty\insertframesubtitle\else%
     {\usebeamercolor[fg]{framesubtitle}\usebeamerfont{framesubtitle}\insertframesubtitle\par}%
